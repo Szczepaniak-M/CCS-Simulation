@@ -1,4 +1,4 @@
-# Tempomat
+# Cruising Control System Simulation
 
 
 ## How to install
