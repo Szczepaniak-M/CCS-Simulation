@@ -7,22 +7,22 @@ from app import app
 input_layout = html.Div([
     html.Div(
         html.Center(
-            [html.H1('TEMPOMAT'),
-             html.H2('Stwórz swoje auto')]),
+            [html.H1('CRUISING CONTROL SYSTEM'),
+             html.H2('Create your car')]),
 
     ),
     html.Br(),
     html.Div([
         html.Center(html.Div([
 
-            html.H4('Typ samochodu:'),
+            html.H4('Type of car:'),
             dcc.RadioItems(
                 id='type',
                 options=[
-                    {'label': 'Sportowy', 'value': 'sport'},
-                    {'label': 'Miejski', 'value': 'city'},
+                    {'label': 'Sports', 'value': 'sport'},
+                    {'label': 'City', 'value': 'city'},
                     {'label': 'SUV', 'value': 'suv'},
-                    {'label': 'Terenowy   ', 'value': 'offroad'}
+                    {'label': 'Off-road', 'value': 'offroad'}
                 ],
                 value='sport',
                 labelStyle=dict(
@@ -31,27 +31,30 @@ input_layout = html.Div([
                     padding=7,
                 )
             ),
-            html.H4('Masa [kg]'),
+            html.H4('Mass [kg]'),
             dcc.Input(
                 id='mass',
                 type='number',
+                style={'width': '40%'},
                 debounce=True,
                 value=0,
                 min=0,
             ),
             html.Br(),
-            html.H4('Moc samochodu [KM]'),
+            html.H4('Power of motor [HP]'),
             dcc.Input(
                 id='power',
                 type='number',
+                style={'width': '40%'},
                 debounce=True,
                 value=0,
                 min=0,
             ),
-            html.H4('Powierzchnia czołowa samochodu[m\u00b2]'),
+            html.H4('Cross sectional area[m\u00b2]'),
             dcc.Input(
                 id='area',
                 type='number',
+                style={'width': '40%'},
                 debounce=True,
                 value=0,
                 min=0,
@@ -63,7 +66,7 @@ input_layout = html.Div([
             dcc.Link(html.Button(
                 id='next_btn',
                 n_clicks=0,
-                children='Dalej',
+                children='Next',
                 style=dict(backgroundColor='#ffffff')
             ), href='/graph'),
             html.Br(),

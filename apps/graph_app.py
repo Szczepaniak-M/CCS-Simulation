@@ -6,16 +6,16 @@ from app import app
 from apps.functions import make_data
 
 graph_layout = html.Div([
-    html.Center(html.H1('TEMPOMAT')),
+    html.Center(html.H1('CRUISING CONTROL SYSTEM')),
     html.Br(),
     html.Div([
         html.Div(html.Center([
-            html.H4('Rodzaj symulacji'),
+            html.H4('Type of simulation'),
             dcc.RadioItems(
                 id='simulation',
                 options=[
-                    {'label': 'Statyczna', 'value': 1},
-                    {'label': 'Czasu rzeczywistego', 'value': 0},
+                    {'label': 'Static', 'value': 1},
+                    {'label': 'Real time', 'value': 0},
                 ],
                 value=1,
                 labelStyle=dict(
@@ -24,20 +24,20 @@ graph_layout = html.Div([
                     padding=7,
                 )
             ),
-            html.H4('Prędkość początkową [km/h]'),
+            html.H4('Initial speed[km/h]'),
             dcc.Input(
                 id='velocity-start',
-                placeholder='Prędkość początkowa',
+                placeholder='Initial speed',
                 type='number',
                 value=40,
                 debounce=True,
                 min=40,
                 max=350,
             ),
-            html.H4('Prędkość docelowa [km/h]'),
+            html.H4('Target speed [km/h]'),
             dcc.Input(
                 id='velocity',
-                placeholder='Prędkość',
+                placeholder='Target Speed',
                 type='number',
                 value=40,
                 debounce=True,
@@ -45,10 +45,10 @@ graph_layout = html.Div([
                 max=350,
             ),
             html.Br(),
-            html.Div([html.H4('Czas symulacji statycznej'),
+            html.Div([html.H4('Time of static simulation'),
                       dcc.Input(
                           id='time',
-                          placeholder='Czas symulacji',
+                          placeholder='Time',
                           type='number',
                           value=0,
                           debounce=True,
@@ -99,7 +99,7 @@ graph_layout = html.Div([
             width='74%',
         )), ], ),
 
-    dcc.Link(html.Button('Powrót do wyboru samochodu', id='back-btn', style=dict(backgroundColor='#ffffff')),
+    dcc.Link(html.Button('Return to choice of the car', id='back-btn', style=dict(backgroundColor='#ffffff')),
              href='/',
              style=dict(marginLeft='2%')
              ),
@@ -278,7 +278,7 @@ def make_plot(data):
             dict(
                 x=data['x'],
                 y=data['power'],
-                name='% użycia mocy silnika',
+                name='% of power of motor',
                 mode='lines',
                 marker=dict(
                     color='#37536d'
@@ -288,7 +288,7 @@ def make_plot(data):
             dict(
                 x=data['x'],
                 y=data['velocity'],
-                name='Prędkość',
+                name='Speed',
                 mode='lines',
                 marker=dict(
                     color='#1a76ff'
@@ -300,7 +300,7 @@ def make_plot(data):
             title='',
             showlegend=True,
             xaxis=dict(
-                title='Czas',
+                title='Time',
                 range=data['x_range'],
                 titlefont=dict(
                     colorfont='#000000'
@@ -310,7 +310,7 @@ def make_plot(data):
                 ),
             ),
             yaxis=dict(
-                title='Prędkość',
+                title='Speed',
                 range=data['y_range'],
                 titlefont=dict(
                     colorfont='#000000'
@@ -321,7 +321,7 @@ def make_plot(data):
                 tickformat='.0f'
             ),
             yaxis2=dict(
-                title='% użycia mocy silnika',
+                title='% of power of motor',
                 anchor='x',
                 overlaying='y',
                 side='right',
